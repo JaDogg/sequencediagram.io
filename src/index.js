@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-snapshot';
 import * as ac from './reducers'
 import App from './views/App'
 import registerServiceWorker from './registerServiceWorker';
@@ -60,7 +60,7 @@ function serializeState() {
 }
 
 function renderAndSerialize() {
-    ReactDOM.render(<App state={store.getState()} dispatch={dispatch} />, document.getElementById('root'));
+    render(<App state={store.getState()} dispatch={dispatch} />, document.getElementById('root'));
 
     const result = serializeState();
     window.location.hash = result;
